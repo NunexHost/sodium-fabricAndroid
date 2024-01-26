@@ -7,14 +7,25 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 
 @Mixin(RenderSystem.class)
 public class RenderSystemMixin {
-  @Redirect(method = "flipFrame", at = @At(value = "INVOKE", target = "Lcom/mojang/blaze3d/systems/RenderSystem;pollEvents()V", ordinal = 0))
-  private static void removeFirstPoll() {
-    // only skip poll if no events were received in the previous frame
-    if (!RenderSystem.getWindow().pollEvents()) {
-      return;
-    }
 
-    // noop
-    // should fix some bugs with minecraft polling events twice for some reason (why does it do that in the first place?)
-  }
+    private static boolean isPojav() {
+        // **Exemplo de detecção Pojav:**
+        // Verifica se a classe PojavLauncher está presente
+        try {
+            Class.forName("me.jellysquid.mods.sodium.client.gui.PojavLauncher");
+            return true;
+        } catch (ClassNotFoundException e) {
+            return false;
+        }
+    }
+
+    @Redirect(method = "flipFrame", at = @At(value = "INVOKE", target = "Lcom/mojang/blaze3d/systems/RenderSystem;pollEvents()V", ordinal = 0))
+    private static void removeFirstPollIfNecessary() {
+        if (isPojav()) {
+            // **Opção 1: No-op para Pojav:**
+            // Não faz nada, evita a primeira chamada de pollEvents
+        } else {
+            RenderSystem.pollEvents(); // Permite o comportamento normal em outros ambientes
+        }
+    }
 }
