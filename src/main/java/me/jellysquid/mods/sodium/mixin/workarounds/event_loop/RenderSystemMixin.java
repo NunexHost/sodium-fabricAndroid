@@ -15,7 +15,6 @@ public class RenderSystemMixin {
     private static void injectFrameHandling(long window, CallbackInfo ci) {
         // Perform essential actions from flipFrame:
         RenderSystem.replayQueue();
-        Tessellator.getInstance().getBuffer().clear();
 
         // Cancel the original flipFrame method
         ci.cancel();
