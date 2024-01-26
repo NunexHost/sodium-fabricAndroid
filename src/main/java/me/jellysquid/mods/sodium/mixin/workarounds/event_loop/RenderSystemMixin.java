@@ -11,6 +11,6 @@ public class RenderSystemMixin {
     @Overwrite(remap = false)
     public static void flipFrame(long window) {
         RenderSystem.replayQueue();
-        Tessellator.getInstance().getBuilder().clear();
+        Tessellator.getInstance().getBuffer().clear();
     }
 }
