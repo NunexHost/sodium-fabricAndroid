@@ -10,7 +10,9 @@ public class RenderSystemMixin {
 
     @Overwrite(remap = false)
     public static void flipFrame(long window) {
+        pollEvents();
         RenderSystem.replayQueue();
-        Tessellator.getInstance().getBuffer().clear();
+        Tessellator.getInstance().clear();
+        pollEvents();
     }
 }
