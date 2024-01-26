@@ -3,6 +3,8 @@ package me.jellysquid.mods.sodium.mixin.workarounds.event_loop;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.render.Tessellator;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Overwrite;
+import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 
