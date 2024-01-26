@@ -9,9 +9,7 @@ import org.spongepowered.asm.mixin.Overwrite;
 public class RenderSystemMixin {
 
     public static void flipFrame(long window) {
-        pollEvents();
         RenderSystem.replayQueue();
         Tessellator.getInstance().getBuffer().clear();
-        pollEvents();
     }
 }
