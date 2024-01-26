@@ -1,7 +1,7 @@
 package me.jellysquid.mods.sodium.mixin.workarounds.event_loop;
 
 import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.blaze3d.vertex.Tesselator;
+import net.minecraft.client.render.Tesselator;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 
