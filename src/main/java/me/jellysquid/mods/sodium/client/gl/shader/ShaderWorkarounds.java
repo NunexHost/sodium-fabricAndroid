@@ -42,7 +42,7 @@ class ShaderWorkarounds {
 			pointers.put(sourceBuffer);
 
 			GL20C.nglShaderSource(glId, 1, pointers.address0(), 0);
-			APIUtil.apiArrayFree(pointers.address0(), 1);
+			org.lwjgl.system.APIUtil.apiArrayFree(pointers.address0(), 1);
 		}
 	}
 }
